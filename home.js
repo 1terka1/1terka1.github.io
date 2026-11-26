@@ -2,13 +2,35 @@ import { initSound, pauseMusic } from './audio.js';
 import { birthdayPrize, congratulationsHash, writeBirthdayPrizeMessage } from './birthday-prize.js';
 import { confetti, setUpDialog } from './party.js';
 
+const welcome = document.querySelector('#welcome');
+const enterSite = document.querySelector('#enter-site');
+const welcomeKey = 'leha-welcome-seen';
 const dialog = document.querySelector('#greeting');
 const greet = document.querySelector('#greet');
 const video = document.querySelector('#greeting-video');
 const prize = document.querySelector('#birthday-prize');
 const fromWheel = location.hash === congratulationsHash;
 
-initSound({ paused: fromWheel });
+let welcomeSeen = false;
+try { welcomeSeen = sessionStorage.getItem(welcomeKey) === 'yes'; } catch {}
+const showWelcome = welcome && !fromWheel && !welcomeSeen;
+
+initSound({ paused: fromWheel || showWelcome });
+if (showWelcome) {
+  function enter() {
+    try { sessionStorage.setItem(welcomeKey, 'yes'); } catch {}
+    welcome.close();
+    pauseMusic(false);
+    greet.focus({ preventScroll: true });
+  }
+
+  enterSite.addEventListener('click', enter);
+  welcome.addEventListener('cancel', event => {
+    event.preventDefault();
+    enter();
+  });
+  welcome.showModal();
+}
 setUpDialog(dialog, greet);
 
 function openGreeting(showPrize) {

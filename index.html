@@ -8,7 +8,7 @@
   <title>Леха тур дршка</title>
   <link rel="icon" href="./gift.svg">
   <link rel="stylesheet" href="./style.css">
-  <script type="module" src="./home.js"></script>
+  <script type="module" src="./home.js?v=welcome"></script>
 </head>
 <body class="home">
   <audio src="./birthday-song.mp3" preload="none" loop data-birthday-song></audio>
@@ -42,6 +42,14 @@
     </section>
   </main>
   <footer class="site-footer wrap">Сделано специально для Лёхи</footer>
+
+  <dialog id="welcome" aria-labelledby="welcome-title" aria-describedby="welcome-text">
+    <div class="result-contents">
+      <h2 id="welcome-title">Лёха Тур, с днём рождения!!!!</h2>
+      <p id="welcome-text">Этот сайт был подготовлен специально для тебя. У нас неограниченные возможности, так что пусть удача решит, что ты получишь в подарок от нас!</p>
+      <button class="button primary" id="enter-site" type="button" autofocus>Открыть сайт</button>
+    </div>
+  </dialog>
 
   <dialog class="greeting-dialog" id="greeting" aria-labelledby="greeting-title">
     <div class="greeting-contents">
