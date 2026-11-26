@@ -1,4 +1,4 @@
-import { initSound, pauseMusic } from './audio.js';
+import { allowSound, initSound, pauseMusic } from './audio.js';
 import { birthdayPrize, congratulationsHash, writeBirthdayPrizeMessage } from './birthday-prize.js';
 import { confetti, setUpDialog } from './party.js';
 
@@ -15,12 +15,12 @@ let welcomeSeen = false;
 try { welcomeSeen = sessionStorage.getItem(welcomeKey) === 'yes'; } catch {}
 const showWelcome = welcome && !fromWheel && !welcomeSeen;
 
-initSound({ paused: fromWheel || showWelcome });
+initSound({ paused: fromWheel });
 if (showWelcome) {
   function enter() {
     try { sessionStorage.setItem(welcomeKey, 'yes'); } catch {}
     welcome.close();
-    pauseMusic(false);
+    allowSound();
     greet.focus({ preventScroll: true });
   }
 
