@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#282724">
+  <title>Колесо фортуны · Леха тур дршка</title>
+  <link rel="icon" href="./gift.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./wheel.js"></script>
+</head>
+<body class="wheel-page">
+  <audio src="./birthday-song.mp3" preload="none" loop data-birthday-song></audio>
+  <div class="space-backdrop" aria-hidden="true"><canvas id="space"></canvas></div>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="./">Леха тур дршка</a>
+      <nav class="site-nav" aria-label="Навигация">
+        <a href="./">Главная</a>
+        <a href="./wheel.html" aria-current="page">Колесо фортуны</a>
+      </nav>
+      <button class="sound-button" type="button" aria-pressed="false" data-sound>Включить звук</button>
+    </div>
+  </header>
+  <div class="birthday-strip">С днём рождения, Лёха!</div>
+  <main class="wheel-main wrap">
+    <p class="saved-prize" id="saved-prize" hidden><strong>Твой выигрыш</strong> <span></span></p>
+    <section class="wheel-intro" aria-labelledby="wheel-title">
+      <h1 id="wheel-title">Колесо фортуны</h1>
+      <p>Крути колесо и узнай, что выпадет.</p>
+      <button class="button primary spin-button" id="spin" type="button" disabled><span aria-hidden="true">✦</span> Крутить колесо</button>
+      <p class="spin-hint" id="spin-hint" hidden>Колесо не зависло — оно просто долго крутится.</p>
+      <div class="spin-status" id="spin-status" role="status"></div>
+    </section>
+    <div class="wheel-stage">
+      <div class="wheel-orbit" aria-hidden="true"></div>
+      <div class="wheel-shell">
+        <canvas id="wheel" width="1120" height="1120" aria-label="Колесо фортуны. Список призов представлен ниже."></canvas>
+        <div class="wheel-hub" aria-hidden="true"><img src="./gift.svg" width="32" height="32" alt=""></div>
+      </div>
+      <div class="wheel-pointer" aria-hidden="true"></div>
+    </div>
+    <section class="prizes" aria-labelledby="prizes-title">
+      <h2 id="prizes-title">Что на колесе</h2>
+      <ol id="prize-list"></ol>
+    </section>
+  </main>
+  <footer class="site-footer wrap">Сделано специально для Лёхи</footer>
+  <canvas id="wheel-explosion" class="explosion-layer" aria-hidden="true" hidden></canvas>
+  <dialog class="result-dialog" id="result" aria-labelledby="result-title">
+    <div class="result-contents">
+      <button class="close-button" type="button" aria-label="Закрыть карточку выигрыша" data-close>×</button>
+      <span class="dialog-icon" id="result-icon" aria-hidden="true"></span>
+      <h2 id="result-title">Выпало</h2>
+      <p id="result-prize"></p>
+      <div id="result-birthday-message" hidden></div>
+      <button class="button secondary" type="button" data-close>К колесу</button>
+    </div>
+  </dialog>
+  <canvas id="confetti" class="confetti-layer" popover="manual" aria-hidden="true"></canvas>
+</body>
+</html>

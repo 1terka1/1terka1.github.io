@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#282724">
+  <meta name="description" content="Праздничный сайт для Лёхи с сюрпризом и колесом фортуны.">
+  <title>Леха тур дршка</title>
+  <link rel="icon" href="./gift.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./home.js"></script>
+</head>
+<body class="home">
+  <audio src="./birthday-song.mp3" preload="none" loop data-birthday-song></audio>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="./">Леха тур дршка</a>
+      <nav class="site-nav" aria-label="Навигация">
+        <a href="./" aria-current="page">Главная</a>
+        <a href="./wheel.html">Колесо фортуны</a>
+      </nav>
+      <button class="sound-button" type="button" aria-pressed="false" data-sound>Включить звук</button>
+    </div>
+  </header>
+  <div class="birthday-strip">С днём рождения, Лёха!</div>
+  <main class="home-main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="postcard-background" aria-hidden="true">
+        <img src="./postcard-1.webp" width="1536" height="1536" alt="" class="background-mcqueen">
+        <img src="./postcard-2.webp" width="1536" height="1097" alt="" class="background-car">
+        <img src="./postcard-3.webp" width="864" height="1536" alt="" class="background-dog">
+        <img src="./postcard-4.webp" width="1536" height="1125" alt="" class="background-cake">
+      </div>
+      <div class="hero-copy wrap">
+        <h1 id="hero-title">Леха тур<br>дршка</h1>
+        <p>Лёха, загадывай желание. Сегодня твой день.</p>
+        <div class="hero-actions">
+          <button class="button primary" id="greet" type="button">Поздравление</button>
+          <a class="button secondary" href="./wheel.html">Крутить колесо</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer wrap">Сделано специально для Лёхи</footer>
+
+  <dialog class="greeting-dialog" id="greeting" aria-labelledby="greeting-title">
+    <div class="greeting-contents">
+      <button class="close-button" type="button" aria-label="Закрыть поздравление" data-close>×</button>
+      <h2 id="greeting-title">Поздравление</h2>
+      <section class="birthday-prize" id="birthday-prize" hidden>
+        <h3></h3>
+        <div id="birthday-prize-message"></div>
+        <a class="button secondary" href="./wheel.html">К колесу</a>
+      </section>
+      <video class="greeting-video" id="greeting-video" src="./birthday-greeting.mp4" width="576" height="1024" controls playsinline preload="none" aria-label="Видео с поздравлением"></video>
+    </div>
+  </dialog>
+  <canvas id="confetti" class="confetti-layer" popover="manual" aria-hidden="true"></canvas>
+</body>
+</html>
